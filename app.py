@@ -1,10 +1,21 @@
 from flask import Flask, render_template
-from models import db, Video
+from flask_sqlalchemy import SQLAlchemy
 from youtube_api import fetch_video_views, VIDEO_IDS
+import os
+
+# Initialize the database object
+db = SQLAlchemy()
+
+# Define the Video model
+class Video(db.Model):
+    id = db.Column(db.Integer, primary_key=True)
+    video_id = db.Column(db.String(12), unique=True, nullable=False)
+    views = db.Column(db.Integer, nullable=False)
 
 def create_app():
     app = Flask(__name__)
-    app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///videos.db'
+
+    app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:////tmp/videos.db'
     app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 
     db.init_app(app)
@@ -28,6 +39,6 @@ def create_app():
 if __name__ == "__main__":
     app = create_app()
     app.run(debug=True)
-    
+
 if __name__ != "__main__":
     app = create_app()

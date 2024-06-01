@@ -19,8 +19,8 @@
             <tbody>
                 {% for video in videos %}
                 <tr>
-                    <td>{{ video.video_id }}</td>
-                    <td>{{ video.views }}</td>
+                    <td data-label="Video ID">{{ video.video_id }}</td>
+                    <td data-label="Views">{{ video.views }}</td>
                 </tr>
                 {% endfor %}
             </tbody>

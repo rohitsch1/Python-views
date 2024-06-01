@@ -1,4 +1,3 @@
-
 * {
     box-sizing: border-box;
     margin: 0;
@@ -29,12 +28,14 @@ h1 {
     text-align: center;
     margin-bottom: 20px;
     color: #007BFF;
+    font-size: 2em;
 }
 
 table {
     width: 100%;
     border-collapse: collapse;
     margin-top: 20px;
+    font-size: 1em;
 }
 
 thead {
@@ -43,14 +44,11 @@ thead {
 }
 
 th, td {
-    padding: 10px;
-    text-align: left;
+    padding: 12px 15px;
     border-bottom: 1px solid #ddd;
 }
 
 th {
-    background-color: #007BFF;
-    color: white;
     text-align: center;
 }
 
@@ -60,6 +58,10 @@ td {
 
 tr:nth-child(even) {
     background-color: #f2f2f2;
+}
+
+tr:hover {
+    background-color: #f1f1f1;
 }
 
 @media (max-width: 600px) {
@@ -72,8 +74,10 @@ tr:nth-child(even) {
         display: block;
     }
 
-    th {
-        display: none;
+    thead tr {
+        position: absolute;
+        top: -9999px;
+        left: -9999px;
     }
 
     tr {
@@ -85,6 +89,7 @@ tr:nth-child(even) {
         text-align: right;
         padding-left: 50%;
         position: relative;
+        border-bottom: 1px solid #ddd;
     }
 
     td::before {
@@ -95,5 +100,9 @@ tr:nth-child(even) {
         padding-right: 10px;
         text-align: left;
         font-weight: bold;
+    }
+
+    td:last-child {
+        border-bottom: 0;
     }
 }
